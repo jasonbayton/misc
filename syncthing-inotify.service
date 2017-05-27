@@ -1,0 +1,17 @@
+[Unit]
+Description=Syncthing Inotify File Watcher for www-data
+Documentation=https://github.com/syncthing/syncthing-inotify/blob/master/README.md
+After=network.target syncthing.service
+Requires=syncthing.service
+
+[Service]
+User=www-data
+ExecStart=/usr/bin/syncthing-inotify -logflags=0
+SuccessExitStatus=2
+RestartForceExitStatus=3
+Restart=on-failure
+ProtectSystem=full
+ProtectHome=read-only
+
+[Install]
+WantedBy=multi-user.target
