@@ -11,7 +11,7 @@ def test():
 
         #run speedtest-cli
         print 'running test'
-        a = os.popen("python ~/speedtest/speedtest-cli --simple").read()
+        a = os.popen("python /home/xxxx/speedtest/speedtest-cli --simple").read()
         print 'ran'
         #split the 3 line result (ping,down,up)
         lines = a.split('\n')
@@ -31,7 +31,7 @@ def test():
                 u = lines[2][8:12]
         print date,p, d, u
         #save the data to file for local network plotting
-        out_file = open('~/speedtest/data.csv', 'a')
+        out_file = open('/home/xxxx/speedtest/data.csv', 'a')
         writer = csv.writer(out_file)
         writer.writerow((ts*1000,p,d,u))
         out_file.close()
@@ -44,7 +44,7 @@ def test():
         my_auth = twitter.OAuth(TOKEN,TOKEN_KEY,CON_SEC,CON_SEC_KEY)
         twit = twitter.Twitter(auth=my_auth)
 
-        #try to tweet if speedtest couldnt even connet. Probably wont work if the internet is down
+        #try to tweet if speedtest couldnt even connect. Probably wont work if the internet is down
         if "Cannot" in a:
                 try:
                         tweet="Hey @virginmedia looks like my connection is flaky in area 25. Problems? #virginoutage #VirginMedia"
