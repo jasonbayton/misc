@@ -11,7 +11,7 @@ def test():
 
         #run speedtest-cli
         print 'running test'
-        a = os.popen("python /root/speedtest-cli --simple").read()
+        a = os.popen("python ~/speedtest/speedtest-cli --simple").read()
         print 'ran'
         #split the 3 line result (ping,down,up)
         lines = a.split('\n')
@@ -31,7 +31,7 @@ def test():
                 u = lines[2][8:12]
         print date,p, d, u
         #save the data to file for local network plotting
-        out_file = open('/root/data.csv', 'a')
+        out_file = open('~/speedtest/data.csv', 'a')
         writer = csv.writer(out_file)
         writer.writerow((ts*1000,p,d,u))
         out_file.close()
